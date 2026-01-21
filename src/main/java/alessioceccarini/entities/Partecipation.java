@@ -28,4 +28,42 @@ public class Partecipation {
 		this.event = event;
 		this.state = state;
 	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	public PartecipationState getState() {
+		return state;
+	}
+
+	public void setState(PartecipationState state) {
+		this.state = state;
+	}
+
+	@Override
+	public String toString() {
+		return "Partecipation{" +
+				"id=" + id +
+				", person=" + person +
+				", event=" + event +
+				", state=" + state +
+				'}';
+	}
 }

@@ -2,6 +2,7 @@ package alessioceccarini;
 
 import alessioceccarini.dao.EventDao;
 import alessioceccarini.dao.LocationDao;
+import alessioceccarini.dao.PartecipationDao;
 import alessioceccarini.dao.PersonDao;
 import alessioceccarini.entities.*;
 import jakarta.persistence.EntityManager;
@@ -18,6 +19,7 @@ public class Application {
 		PersonDao pd = new PersonDao(em);
 		EventDao ed = new EventDao(em);
 		LocationDao ld = new LocationDao(em);
+		PartecipationDao partd = new PartecipationDao(em);
 
 		Person person1 = new Person("Mario", "Rossi", "mario@mm.it", LocalDate.of(1990, 7, 9), Gender.MALE);
 		Person person2 = new Person("Marta", "Bianchi", "marta@mm.it", LocalDate.of(1991, 6, 3), Gender.FEMALE);
@@ -44,6 +46,15 @@ public class Application {
 //		ld.saveLocation(location);
 //		ld.saveLocation(location1);
 //		ld.saveLocation(location2);
+		try {
+			pd.findById("fff90edd-2daf-43a3-8e35-ce5c013a4bfe");
+			ed.findById("b2ce9ee7-9849-40cc-af88-c1d472256baa");
+			Partecipation partecipation = new Partecipation(person1, event, PartecipationState.CONFERMATO);
+			partd.savePartecipation(partecipation);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 
 		System.out.println("Hello World!");
 	}
