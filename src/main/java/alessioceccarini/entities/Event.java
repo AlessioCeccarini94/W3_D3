@@ -3,6 +3,7 @@ package alessioceccarini.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -19,6 +20,9 @@ public class Event {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "event_type")
 	private EventType type;
+
+	@OneToMany(mappedBy = "event")
+	private List<Partecipation> partecipation;
 
 	public Event() {
 	}
