@@ -9,7 +9,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "events")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "event_type", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "event_type")
 public abstract class Event {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -33,10 +33,11 @@ public abstract class Event {
 	public Event() {
 	}
 
-	public Event(String name, LocalDate date, EventType type) {
+	public Event(String name, LocalDate date, EventType type, Location location) {
 		this.name = name;
 		this.date = date;
 		this.type = type;
+		this.location = location;
 	}
 
 	public UUID getId() {

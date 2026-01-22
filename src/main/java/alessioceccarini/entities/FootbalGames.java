@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 
 @Entity
-@DiscriminatorValue("football_game")
+@DiscriminatorValue("football_games")
 public class FootbalGames extends Event {
 	private String homeTeam;
 	private String awayTeam;
@@ -19,8 +19,20 @@ public class FootbalGames extends Event {
 	public FootbalGames() {
 	}
 
-	public FootbalGames(String name, LocalDate matchDay, Location location, String homeTeam, String awayTeam, String winnerTeam) {
-		super();
+	public FootbalGames(String name, LocalDate matchDay, EventType type, Location location, String homeTeam, String awayTeam, String winnerTeam) {
+		super(name, matchDay, type, location);
+		this.homeTeam = homeTeam;
+		this.awayTeam = awayTeam;
+		this.winnerTeam = winnerTeam;
+		if (homeTeamOfGoals > 0 && awayTeamOfGoals > 0) {
+			this.homeTeamOfGoals = homeTeamOfGoals;
+			this.awayTeamOfGoals = awayTeamOfGoals;
+		} else {
+			this.homeTeamOfGoals = Integer.parseInt(null);
+			this.awayTeamOfGoals = Integer.parseInt(null);
+		}
+
+
 	}
 
 
@@ -72,6 +84,6 @@ public class FootbalGames extends Event {
 				", winnerTeam='" + winnerTeam + '\'' +
 				", homeTeamOfGoals=" + homeTeamOfGoals +
 				", awayTeamOfGoals=" + awayTeamOfGoals +
-				'}';
+				'}' + super.toString();
 	}
 }
